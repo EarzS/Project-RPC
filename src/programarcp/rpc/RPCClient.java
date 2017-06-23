@@ -9,7 +9,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import programarcp.model.EstudianteVo;
 
 /**
  * Representa el cliente RPC que permitira ejecutar comandos de forma remota.
@@ -19,7 +18,7 @@ import programarcp.model.EstudianteVo;
  */
 public class RPCClient {
     
-    private static String PATH = "http://localhost/RPC2";
+    private static final String PATH = "http://localhost/RPC2";
             
     private XmlRpcClient server;
     
