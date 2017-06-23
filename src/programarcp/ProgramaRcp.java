@@ -24,12 +24,17 @@ public class ProgramaRcp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // 1 Servidor y 3 clientes conectados simultaneamente.
-        ServerController servidor = new ServerController();
+        if(args.length != 1){
+            System.out.println("usage: java ProgramaRcp <client|server>");
+        }
         
-        ClienteController cliente1 = new ClienteController();
-        /*ClienteController cliente2 = new ClienteController();
-        ClienteController cliente3 = new ClienteController();*/
+        if(args[0] == "client") {
+            ClienteController cliente1 = new ClienteController();
+        }else if(args[0] == "server") {
+            ServerController servidor = new ServerController();
+        }else {
+            System.out.println("usage: java ProgramaRcp <client|server>");
+        }
     }
     
 }
