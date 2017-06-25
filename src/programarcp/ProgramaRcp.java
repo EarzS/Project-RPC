@@ -29,10 +29,11 @@ public class ProgramaRcp {
             return;
         }
         
-        if(args[0] == "client") {
+        if("client".equals(args[0])) {
             ClienteController cliente1 = new ClienteController();
-        }else if(args[0] == "server") {
+        }else if("server".equals(args[0])) {
             ServerController servidor = new ServerController();
+            servidor.init();
         }else {
             System.out.println("usage: java ProgramaRcp <client|server>");
         }
