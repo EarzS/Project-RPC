@@ -26,6 +26,7 @@ public class ProgramaRcp {
     public static void main(String[] args) {
         if(args.length != 1){
             System.out.println("usage: java ProgramaRcp <client|server>");
+            return;
         }
         
         if(args[0] == "client") {
