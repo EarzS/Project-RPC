@@ -96,7 +96,50 @@ public class ClienteView extends Thread{
             String apellido = scanner.nextLine();
             estudiante.setApellido(apellido.isEmpty()? estudiante.getApellido() : apellido);
             
-            // TODO. Codigo para modificar notas.
+            char letter;
+            int index;
+            float nota;
+            System.out.print("Desea modificar una nota? (y/n) ");
+            while((letter = scanner.nextLine().toLowerCase().charAt(0)) == 'y') {
+                System.out.print("Que desea hacer?\n"
+                        + "1. Agregar nota\n"
+                        + "2. Modificar nota\n"
+                        + "3. Remover nota\n"
+                        + "Opcion: ");
+                index = Integer.parseInt(scanner.nextLine());
+                
+                if(index == 1) {
+                    System.out.print("Ingrese la nueva nota: ");
+                    nota = Float.parseFloat(scanner.nextLine());
+                    if(nota < 0 || nota > 10) {
+                        System.out.println("Nota invalida...");
+                    }
+                } else if(index == 2 || index == 3) {
+                    for(int i = 0; i < estudiante.getNotas().size(); i++) {
+                        System.out.println("Nota #" + (i+1) + ": " + estudiante.getNotas().get(i));
+                    }
+                    System.out.print("Cual? ");
+                    index = Integer.parseInt(scanner.nextLine());
+                    
+                    if(index < 1 || index > estudiante.getNotas().size()){
+                        index--;
+                        System.out.print("Ingrese la nueva nota: ");
+                        nota = Float.parseFloat(scanner.nextLine());
+                        if(nota < 0 || nota > 10) {
+                            System.out.println("Nota invalida...");
+                            continue;
+                        }else {
+                            estudiante.getNotas().set(index, nota);
+                        }
+                    }else {
+                        System.out.println("Posicion invalida...");
+                    }
+                }
+                
+                System.out.print("Desea modificar una nota? (y/n) ");
+            }
+            
+
             
             if(controller.updateEstudiante()) {
                 System.out.println("Estudiante modificado satisfactoriamente.");
