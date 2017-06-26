@@ -114,6 +114,7 @@ public class ClienteView extends Thread{
                     if(nota < 0 || nota > 10) {
                         System.out.println("Nota invalida...");
                     }
+                    estudiante.getNotas().add(nota);
                 } else if(index == 2 || index == 3) {
                     for(int i = 0; i < estudiante.getNotas().size(); i++) {
                         System.out.println("Nota #" + (i+1) + ": " + estudiante.getNotas().get(i));
