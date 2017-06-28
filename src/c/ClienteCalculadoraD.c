@@ -6,11 +6,10 @@
 
 #include "CalculadoraD.h"
 
-struct {
+typedef struct {
 	u_int vector_len;
 	float *vector_val;
 } vector;
-
 
 void suma(CLIENT *clnt);
 void resta(CLIENT *clnt);
@@ -176,6 +175,7 @@ void promedio(CLIENT *clnt) {
 		printf("Ingrese valor #%d: ", i+1);
 		scanf("%f",&promedio_1_arg.vector.vector_val[i]);
 	}
+	promedio_1_arg.vector.vector_len = promedio_1_arg.tamano;
 
 	result_5 = promedio_1(&promedio_1_arg, clnt);
 	if (result_5 == (float *) NULL) {
@@ -184,7 +184,7 @@ void promedio(CLIENT *clnt) {
 
 	printf("Promedio de [");
 	for(i = 0; i < promedio_1_arg.tamano; i++) {
-		printf("%d ", promedio_1_arg.vector.vector_val[i]);
+		printf("%.2f ", promedio_1_arg.vector.vector_val[i]);
 	}
 	printf("] = %f \n", *result_5);
 }
