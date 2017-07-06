@@ -29,10 +29,10 @@ public class ClienteController {
     public boolean createEstudiante() {
         
         if(!validateCedula()) {
-            view.warnUser("Cedula invalida.");
+            view.warnUser("Invalid id.");
             return false;
         }else if (!validateNota()) {
-            view.warnUser("Nota debe estar entre 0 y 10.");
+            view.warnUser("Note must be between 0 and 10.");
             return false;
         }
         
@@ -43,7 +43,7 @@ public class ClienteController {
         
         boolean b = (boolean) rpc.callMethod("server.create", estudiante);
         if(!b) {
-            view.warnUser("No se pudo crear el estudiante.");
+            view.warnUser("Couldn't create the student.");
             return false;
         }
         
@@ -52,13 +52,13 @@ public class ClienteController {
     
     public EstudianteVo readEstudiante() {
         if(!validateCedula()) {
-            view.warnUser("Cedula invalida.");
+            view.warnUser("Invalid id.");
             return null;
         }
         
         EstudianteVo estudiante = (EstudianteVo) rpc.callMethod("server.read", view.getCedula());
         if(estudiante == null) {
-            view.warnUser("No se pudo encontrar el estudiante.");
+            view.warnUser("Student not found.");
         }
         
         return estudiante;
@@ -66,7 +66,7 @@ public class ClienteController {
     
     public boolean updateEstudiante() {
         if (!validateNota()) {
-            view.warnUser("Nota debe estar entre 0 y 10.");
+            view.warnUser("Note must be between 0 and 10.");
             return false;
         }
         
@@ -77,7 +77,7 @@ public class ClienteController {
         
         boolean b = (boolean) rpc.callMethod("server.update", estudiante);
         if(!b) {
-            view.warnUser("No se pudo actualizar el estudiante.");
+            view.warnUser("Couldn't update the student.");
             return false;
         }
         
@@ -87,12 +87,12 @@ public class ClienteController {
     
     public boolean deleteEstudiante() {
         if(!validateCedula()) {
-            view.warnUser("Cedula invalida.");
+            view.warnUser("Invalid id.");
             return false;
         }
         
         if(!(boolean) rpc.callMethod("server.delete", view.getCedula())) {
-            view.warnUser("No se pudo eliminar el estudiante.");
+            view.warnUser("Couldn't delete the student.");
             return false;
         }
         
@@ -101,13 +101,13 @@ public class ClienteController {
     
     public float promedioParticular() {
         if(!validateCedula()) {
-            view.warnUser("Cedula invalida.");
+            view.warnUser("Invalid id.");
             return -1;
         }
         
         float promedio = (float) rpc.callMethod("server.promedio", view.getCedula());
         if(promedio == -1) {
-            view.warnUser("No se pudo obtener el promedio particular.");
+            view.warnUser("Couldn't get average.");
         }
         
         return promedio;
@@ -116,7 +116,7 @@ public class ClienteController {
     public float promedioGeneral() {
         float promedio = (float) rpc.callMethod("server.promedio", null);
         if(promedio == -1) {
-            view.warnUser("No se pudo obtener el promedio general.");
+            view.warnUser("Couldn't get general average.");
         }
         
         return promedio;
@@ -125,7 +125,7 @@ public class ClienteController {
     public float notaMaxima() {
         float maximo = (float) rpc.callMethod("server.maximo", null);
         if(maximo == -1) {
-            view.warnUser("No se pudo obtener la nota maxima.");
+            view.warnUser("Couldn't get max note.");
         }
         
         return maximo;
@@ -134,7 +134,7 @@ public class ClienteController {
     public float notaMinima() {
         float minimo = (float) rpc.callMethod("server.minimo", null);
         if(minimo == -1) {
-            view.warnUser("No se pudo obtener la nota minima.");
+            view.warnUser("Couldn't get min note.");
         }
         
         return minimo;

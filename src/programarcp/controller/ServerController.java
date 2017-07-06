@@ -27,116 +27,116 @@ public class ServerController {
     }
     
     public void init() {
-        view.logMessage("Iniciando servidor...");
+        view.logMessage("Starting server...");
         rpc = new RPCServer();
-        view.logMessage("Servidor iniciado!");
+        view.logMessage("Server started!");
     }
     
     // ======================= Metodos de acceso ===============================
     
     public boolean create(EstudianteVo estudiante) {
-        view.logMessage("Peticion recibida: create.");
+        view.logMessage("Request received: create.");
 
         boolean b = estudianteDao.createEstudiante(estudiante);
         if(b){
-            view.logMessage("Estudiante creado exitosamente.");
+            view.logMessage("Student created successfully.");
         }else {
-            view.warn("No se pudo crear el estudiante.");
+            view.warn("Couldn't create student.");
         }
         
         return b;
     }
     
     public EstudianteVo read(String cedula) {
-        view.logMessage("Peticion recibida: read (singular).");
+        view.logMessage("Request received: read (single).");
         
         EstudianteVo estudiante = estudianteDao.readEstudiante(cedula);
         if(estudiante != null){
-            view.logMessage("Estudiante encontrado exitosamente.");
+            view.logMessage("Student found successfully.");
         }else {
-            view.warn("No se pudo encontrar el estudiante.");
+            view.warn("Couldn't find student.");
         }
         
         return estudiante;
     }
     
     public boolean update(EstudianteVo estudiante) {
-        view.logMessage("Peticion recibida: update.");
+        view.logMessage("Request received: update.");
         
         boolean b = estudianteDao.updateEstudiante(estudiante);
         if(b){
-            view.logMessage("Estudiante actualizado exitosamente.");
+            view.logMessage("Student updated successfully.");
         }else {
-            view.warn("No se pudo crear el estudiante.");
+            view.warn("Couldn't update student.");
         }
         
         return b;
     }
     
     public boolean delete(String cedula) {
-        view.logMessage("Peticion recibida: delete.");
+        view.logMessage("Request received: delete.");
         
         boolean b = estudianteDao.deleteEstudiante(cedula);
         if(b){
-            view.logMessage("Estudiante eliminado exitosamente.");
+            view.logMessage("Student deleted successfully.");
         }else {
-            view.warn("No se pudo eliminar el estudiante.");
+            view.warn("Couldn't delete student.");
         }
         
         return b;
     }
     
     public float promedio(String cedula) {
-        view.logMessage("Peticion recibida: promedio (estudiante especifico).");
+        view.logMessage("Request received: avg (single).");
         
         float promedio = 
                 estudianteDao.getPromedioParticular(cedula);
         if(promedio != -1) {
-            view.logMessage("Promedio de estudiante obtenido exitosamente.");
+            view.logMessage("Average found successfully.");
         }else {
-            view.warn("No se pudo obtener el promedio del estudiante.");
+            view.warn("Couldn't get average.");
         }
         
         return promedio;
     }
     
     public float promedio() {
-        view.logMessage("Peticion recibida: promedio (todos los estudiantes).");
+        view.logMessage("Request received: avg (general).");
         
         float promedio = 
                 estudianteDao.getPromedioGeneral();
         if(promedio != -1) {
-            view.logMessage("Promedio general obtenido exitosamente.");
+            view.logMessage("Average found successfully.");
         }else {
-            view.warn("No se pudo obtener el promedio general.");
+            view.warn("Couldn't get average.");
         }
         
         return promedio;
     }
     
     public float maximo() {
-        view.logMessage("Peticion recibida: maximo.");
+        view.logMessage("Request received: maximo.");
         
         float maximo = 
                 estudianteDao.getMaximaNota();
         if(maximo != -1) {
-            view.logMessage("Maxima nota obtenida exitosamente.");
+            view.logMessage("Max note found successfully.");
         }else {
-            view.warn("No se pudo obtener la maxima nota del grupo.");
+            view.warn("Couldn't get max note.");
         }
         
         return maximo;
     }
     
     public float minimo() {
-        view.logMessage("Peticion recibida: minimo.");
+        view.logMessage("Request received: minimo.");
         
         float minimo = 
                 estudianteDao.getMinimaNota();
         if(minimo != -1) {
-            view.logMessage("Minima nota obtenida exitosamente.");
+            view.logMessage("Min note found successfully.");
         }else {
-            view.warn("No se pudo obtener la minima nota del grupo.");
+            view.warn("Couldn't get min note.");
         }
         
         return minimo;

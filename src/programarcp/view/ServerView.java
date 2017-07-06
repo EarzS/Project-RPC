@@ -27,7 +27,7 @@ public class ServerView {
     
     private ServerView() {
         estudiante = new EstudianteVo();
-        logMessage("Instanciando vista");
+        logMessage("Instancing view");
     }
     
     public void setEstudiante(EstudianteVo e) {
